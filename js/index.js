@@ -1,47 +1,57 @@
 
 
-let palabras = "Perro, Gato, Burro, Elefante";
+let animales = "Gato, Elefante, Perro, Mono";
+let hombres = "Mariano, Raquel, Arturo, Leonel";
+let autos = "Fiat, Audi, Ferrari, Ford";
 
 
-function mostrarPalabras(arr, i, callback) {
-if (arr.length == i) {
-    console.log('Proceso completo')
-    console.log(`Cantidad de palabras: ${arr.length}`)
-    return;
+function mostrarPalabras(arr, i, callback,) {
+
+    if (arr.length == i) {
+        console.log('Proceso completo')
+        console.log(`Cantidad de palabras: ${arr.length}`)
+        return;
+    }
+
+    setTimeout(() =>{
+        callback(arr[i]);
+        mostrarPalabras(arr, i+1, callback);
+    
+    },1000)
+
 }
 
-setTimeout(() =>{
-    callback(arr[i]);
-    mostrarPalabras(arr, i+1, callback);
- 
-},1000)
 
-}
-
-mostrarPalabras(palabras.split(' '),0,(e)=>{
+mostrarPalabras(animales.split(' '),0,(e)=>{
     console.log(e)
 });
 
 
-//callback
-
-let llamadasAlaFuncion = (msg,cb) => {
-    console.log(msg);
-    setTimeout(cb, 100)
-}
+mostrarPalabras(hombres.split(' '),0,(e)=>{
+    console.log(e)
+});
 
 
-llamadasAlaFuncion(1,()=>{
+mostrarPalabras(autos.split(' '),0,(e)=>{
+    console.log(e)
+});
 
-    llamadasAlaFuncion(2,()=>{
+//probe utilizar este ejemplo de anidamiento pero no funciono :(
 
-        llamadasAlaFuncion(3,()=>{
+// let hacerTarea2 = (msg,cb) => {
+//     console.log(msg);
+//     setTimeout(cb, 100)
+// }   
 
-        console.log('finalizar tarea')    
-        })
-    })
-})
+// console.log('Iniciando tarea')
+// hacerTarea2(1,()=>{
 
-llamadasAlaFuncion(1)
-llamadasAlaFuncion(2)
-llamadasAlaFuncion(3)
+//     hacerTarea2(2,()=>{
+
+//         hacerTarea2(3,()=>{
+
+//         console.log('finalizar tarea')    
+//         })
+//     })
+// })
+
